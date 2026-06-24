@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="jumbotron text-center bg-light p-4 rounded shadow-sm">
+    <h1>Your Health Is Our Top Priority</h1>
+    <p class="lead">Order medicines from the comfort of your home</p>
+    <a href="/medicines/" class="btn btn-primary">Explore Now</a>
+</div>
+
+<h2 class="mt-5">Featured Medicines</h2>
+<div class="row">
+    {% for med in featured %}
+        <div class="col-md-4 mt-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                            {% if med.image %}
+          <img src="{{ med.image.url }}" class="card-img-top" alt="{{ med.name }}">
+        {% endif %}
+                    <h5 class="card-title">{{ med.name }}</h5>
+                    <p class="card-text">₹{{ med.price }}</p>
+                    <a href="/cart/add/{{ med.id }}/" class="btn btn-success">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No medicines available.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

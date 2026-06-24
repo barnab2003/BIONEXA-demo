@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}My Prescriptions{% endblock %}
+{% block content %}
+<h2>My Uploaded Prescriptions</h2>
+{% if prescriptions %}
+<table class="table">
+  <thead><tr><th>File</th><th>Status</th><th>Uploaded</th></tr></thead>
+  <tbody>
+    {% for p in prescriptions %}
+    <tr>
+      <td><a href="{{ p.file.url }}" target="_blank">View</a></td>
+      <td>{{ p.status }}</td>
+      <td>{{ p.uploaded_at }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No prescriptions uploaded yet.</p>
+{% endif %}
+{% endblock %}

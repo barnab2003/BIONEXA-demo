@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}{{ medicine.name }}{% endblock %}
+{% block content %}
+<div class="card">
+  {% if medicine.image %}
+    <img src="{{ medicine.image.url }}" class="card-img-top" alt="{{ medicine.name }}">
+  {% endif %}
+  <div class="card-body">
+    <h3 class="card-title">{{ medicine.name }}</h3>
+    <p class="card-text">Price: ₹{{ medicine.price }}</p>
+    <p class="card-text">Stock: {{ medicine.stock }}</p>
+    <p class="card-text">Prescription Required: {{ medicine.prescription_required }}</p>
+    <a href="/cart/add/{{ medicine.id }}/" class="btn btn-success">Add to Cart</a>
+  </div>
+</div>
+{% endblock %}

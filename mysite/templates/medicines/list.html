@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Medicines{% endblock %}
+{% block content %}
+<h2>Available Medicines</h2>
+<div class="row">
+  {% for med in medicines %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        {% if med.image %}
+          <img src="{{ med.image.url }}" class="card-img-top" alt="{{ med.name }}">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ med.name }}</h5>
+          <p class="card-text">Price: ₹{{ med.price }}</p>
+          <a href="{% url 'medicine_detail' med.id %}" class="btn btn-info">View Details</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Prescription Required{% endblock %}
+{% block content %}
+<div class="alert alert-warning">
+  <h4>This medicine requires a valid prescription.</h4>
+  <p>Please <a href="/prescriptions/upload/">upload a prescription</a> and wait for admin approval.</p>
+  <a href="/medicines/" class="btn btn-secondary mt-2">Back to Medicines</a>
+</div>
+{% endblock %}
